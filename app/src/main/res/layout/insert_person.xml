@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="net.tvalk.actortemplates.MainActivity">
+
+
+    <EditText
+        android:id="@+id/editText20"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Aantekeningen"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="Aantekening"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/editText21"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="368dp"
+        android:layout_height="1dp"
+        android:text="Naam"/>
+
+    <EditText
+        android:id="@+id/editText17"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:hint="Naam"
+        android:inputType="textPersonName"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:text="Functie"/>
+
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Functie"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/editText22"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Telefoon"
+        android:inputType="phone"
+        android:layout_marginTop="0dp"/>
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Telefoon"/>
+</LinearLayout>
