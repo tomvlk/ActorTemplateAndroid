@@ -5,17 +5,24 @@ package net.tvalk.actortemplates.Classes;
  */
 
 public class Project {
-    private String id, description, name;
+    private String description, name;
+
+    public Project() {
+    }
 
     public String getDescription() {
         return description;
     }
 
-    public String getId() {
-        return id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

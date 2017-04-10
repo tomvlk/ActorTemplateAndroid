@@ -5,14 +5,22 @@ package net.tvalk.actortemplates.Classes;
  */
 
 public class Person {
-    private String id, name, photo, function, email, description;
+//    private String id;
+    private String description;
+    private String email;
+    private String function;
+    private String name;
+    private String phone;
+    private String photo;
 
-    public String getId() {
-        return id;
+
+
+    public String getPhone() {
+        return phone;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getName() {
