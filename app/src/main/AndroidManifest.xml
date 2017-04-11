@@ -16,8 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.InsertPerson"/>
-        <activity android:name=".Activity.ShowActorTemplate"/>
+        <activity android:name=".Activity.InsertTemplate"/>
         <activity android:name=".Activity.ShowProjectDetails"/>
+        <activity android:name=".Activity.ShowTemplates"/>
+        <activity android:name=".Activity.ShowPersons"/>
+        <activity android:name=".Activity.ShowTemplateDetails"/>
     </application>
 
 </manifest>

@@ -16,13 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import net.tvalk.actortemplates.Adapter.PersonAdapter;
+import net.tvalk.actortemplates.Adapter.TemplateAdapter;
 import net.tvalk.actortemplates.R;
 
 /**
  * Created by Gebruiker on 11-4-2017.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class ShowTemplateDetails extends AppCompatActivity {
     String key;
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     // Firebase instance variables
@@ -50,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(MainActivity.this, InsertTemplate.class );
-//                i.putExtra("key", key);
-//                startActivity(i);
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ShowTemplateDetails.this, InsertTemplate.class );
+                i.putExtra("key", key);
+                startActivity(i);
+            }
+        });
 
     }
 }

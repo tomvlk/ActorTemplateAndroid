@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/Project_name_edit"
@@ -15,6 +16,7 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
+
     <TextView
         android:id="@+id/Project_description_edit"
         android:layout_width="match_parent"
@@ -22,18 +24,22 @@
         android:textSize="10dip"
         android:inputType="textPersonName"
         android:text="Description"
+        android:textStyle="bold"
         android:gravity="center"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical" />
+
+    <include
+        layout="@layout/content_show_templates"
+        android:layout_width="wrap_content"
+        android:layout_height="384dp"
+        android:layout_weight="0.95" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </LinearLayout>
+

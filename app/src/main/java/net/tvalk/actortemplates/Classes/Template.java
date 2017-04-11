@@ -6,7 +6,8 @@ package net.tvalk.actortemplates.Classes;
 
 public class Template {
     private String name, description;
-    private boolean archived;
+    private boolean archived = false;
+    String id;
 
     public Template() {
     }

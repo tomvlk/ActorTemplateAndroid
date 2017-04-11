@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * Created by Gebruiker on 5-4-2017.
  */
 
-public class ShowActorTemplate extends AppCompatActivity {
+public class ShowTemplates extends AppCompatActivity {
     DatabaseReference mDatabase =  FirebaseDatabase.getInstance().getReference();
 
     private ProjectAdapter mAdapter;
@@ -62,8 +62,8 @@ public class ShowActorTemplate extends AppCompatActivity {
         Dialog d = new Dialog(this);
         d.setTitle("Save online");
 
-        naamEditText = (EditText) d.findViewById(R.id.template_name);
-        beschrijvingEditText = (EditText) d.findViewById(R.id.template_description);
+        naamEditText = (EditText) d.findViewById(R.id.Template_name);
+        beschrijvingEditText = (EditText) d.findViewById(R.id.Template_description);
         savebutton = (Button) d.findViewById(R.id.saveBtn);
 
 //            savebutton.setOnClickListener(new View.OnClickListener(){
@@ -119,7 +119,7 @@ public class ShowActorTemplate extends AppCompatActivity {
         }
         if(templates.size()>0)
         {
-//            adapter=new ProjectAdapter(ShowActorTemplate.this, templates);
+//            adapter=new ProjectAdapter(ShowTemplates.this, templates);
             rv.setAdapter(adapter);
         }
     }

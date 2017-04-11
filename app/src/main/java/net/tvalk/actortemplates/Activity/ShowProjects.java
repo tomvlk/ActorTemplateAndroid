@@ -74,7 +74,7 @@ public class ShowProjects extends AppCompatActivity implements GoogleApiClient.O
 
 
         //add a OnItemClickListener
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.Project_recycler_view);
 
         mAdapter = new ProjectAdapter();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());

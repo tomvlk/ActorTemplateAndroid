@@ -60,11 +60,11 @@ public class ShowPersons extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         TextView tv1 = (TextView) findViewById(R.id.Person_name);
-                        TextView tv2 = (TextView) findViewById(R.id.Person_description);
+                        TextView tv2 = (TextView) findViewById(R.id.Person_function);
                         TextView tv3 = (TextView) findViewById(R.id.Person_email);
-                        TextView tv4 = (TextView) findViewById(R.id.Person_phone);
+                        TextView tv4 = (TextView) findViewById(R.id.Person_tel);
                         TextView tv5 = (TextView) findViewById(R.id.Person_photo);
-                        TextView tv6 = (TextView) findViewById(R.id.Person_function);
+                        TextView tv6 = (TextView) findViewById(R.id.Person_description);
 
                         Person entry = dataSnapshot.getValue(Person.class);
                         tv1.setText(entry.getName());

@@ -10,7 +10,7 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/Person_photo"
+        android:id="@+id/imageView2"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Person_description"
@@ -42,7 +42,7 @@
         android:textSize="10dip" />
 
     <TextView
-        android:id="@+id/Person_email"
+        android:id="@+id/Project_email"
         android:layout_width="91dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
