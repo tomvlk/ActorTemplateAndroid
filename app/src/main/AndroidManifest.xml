@@ -8,16 +8,28 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity
+            android:name=".Activity.ProjectListActivity"
+            android:label="@string/title_project_list"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.InsertPerson"/>
-        <activity android:name=".Activity.ShowActorTemplate"/>
-
+        <activity android:name=".Activity.SignInActivity"></activity>
+        <activity android:name=".Activity.InsertPerson" />
+        <activity android:name=".Activity.ShowActorTemplate" />
+        <activity
+            android:name=".Activity.ProjectDetailActivity"
+            android:label="@string/title_project_detail"
+            android:parentActivityName=".Activity.ProjectListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.tvalk.actortemplates.Activity.ProjectListActivity" />
+        </activity>
     </application>
 
 </manifest>

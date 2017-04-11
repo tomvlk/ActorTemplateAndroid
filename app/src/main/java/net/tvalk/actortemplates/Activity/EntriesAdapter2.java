@@ -43,4 +43,9 @@ String name  = users.get((position)).getName();
     public int getItemCount() {
         return users.size();
     }
+
+    public void setData(ArrayList<User> users) {
+        this.users = users;
+        this.notifyDataSetChanged();
+    }
 }

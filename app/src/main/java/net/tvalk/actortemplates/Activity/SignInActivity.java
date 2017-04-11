@@ -1,36 +1,42 @@
- package net.tvalk.actortemplates.Activity;
+package net.tvalk.actortemplates.Activity;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.annotation.NonNull;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-        import com.google.android.gms.auth.api.Auth;
-        import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-        import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-        import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-        import com.google.android.gms.common.ConnectionResult;
-        import com.google.android.gms.common.SignInButton;
-        import com.google.android.gms.common.api.GoogleApiClient;
-        import com.google.android.gms.tasks.OnCompleteListener;
-        import com.google.android.gms.tasks.Task;
-        import com.google.firebase.auth.AuthCredential;
-        import com.google.firebase.auth.AuthResult;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
-        import net.tvalk.actortemplates.R;
+import net.tvalk.actortemplates.R;
 
-        public class SignInActivity extends AppCompatActivity implements
-        GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
-    private SignInButton mSignInButton;
+    private SignInButton mGoogleButton;
+    private Button mSignInButton;
+    private EditText mEmail;
+    private EditText mPassword;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -43,9 +49,13 @@
         setContentView(R.layout.activity_sign_in);
 
         // Assign fields
-        mSignInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        mGoogleButton = (SignInButton) findViewById(R.id.sign_in_button_google);
+        mSignInButton = (Button) findViewById(R.id.sign_in_button);
+        mEmail = (EditText) findViewById(R.id.sign_in_email);
+        mPassword = (EditText) findViewById(R.id.sign_in_password);
 
         // Set click listeners
+        mGoogleButton.setOnClickListener(this);
         mSignInButton.setOnClickListener(this);
 
         // Configure Google Sign In
@@ -65,15 +75,38 @@
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.sign_in_button_google:
+                signInGoogle();
+                break;
             case R.id.sign_in_button:
                 signIn();
-                break;
         }
     }
 
-    private void signIn() {
+    private void signInGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void signIn() {
+        String email = this.mEmail.getText().toString();
+        String password = this.mPassword.getText().toString();
+        Task<AuthResult> authTask = FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password);
+        authTask.addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                SignInActivity.this.finish();
+            }
+        });
+        authTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // todo: make alert for this.
+                System.out.println(e.toString());
+                System.out.println(e.toString());
+                System.out.println(e.toString());
+            }
+        });
     }
 
     @Override

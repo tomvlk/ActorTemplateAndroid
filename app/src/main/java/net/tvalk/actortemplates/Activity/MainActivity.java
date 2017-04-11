@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import net.tvalk.actortemplates.Classes.Template;
 import net.tvalk.actortemplates.Classes.User;
@@ -23,9 +24,6 @@ import net.tvalk.actortemplates.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Gebruiker on 5-4-2017.
- */
 
 public class MainActivity extends AppCompatActivity {
     DatabaseReference mDatabase =  FirebaseDatabase.getInstance().getReference();
@@ -46,8 +44,11 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
 
+        adapter = new EntriesAdapter2(this, new ArrayList<User>());
+
         rv = (RecyclerView) findViewById(R.id.recycler_view_templaterinos);
         rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(adapter);
         this.refreshData();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void refreshData(){
-        mDatabase.addChildEventListener(new ChildEventListener() {
+        mDatabase.child("users").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 getUpdates(dataSnapshot);
@@ -115,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(templates.size()>0)
         {
-            adapter=new EntriesAdapter2(MainActivity.this, templates);
-            rv.setAdapter(adapter);
+            adapter.setData(templates);
         }
     }
 }

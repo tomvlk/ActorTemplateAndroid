@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Actor Templates</string>
+    <string name="title_project_list">Projects</string>
+    <string name="title_project_detail">Project Detail</string>
+    <string name="label_signin_email">Email</string>
+    <string name="label_signin_password">Password</string>
+    <string name="label_signin_button">Sign in</string>
+    <string name="sign_in">Sign in to your account</string>
 </resources>
