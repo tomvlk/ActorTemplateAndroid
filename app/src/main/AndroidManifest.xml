@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".Activity.InsertPerson"/>
         <activity android:name=".Activity.ShowActorTemplate"/>
-
+        <activity android:name=".Activity.ShowProjectDetails"/>
     </application>
 
 </manifest>

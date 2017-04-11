@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Project_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Project_name"
+        android:textSize="16dip"
+        android:textStyle="bold"></TextView>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Project name" />
+
+    <TextView
+        android:id="@+id/Project_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Project_description"
+        android:textSize="14dip"></TextView>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Description" />
+
+    <TextView
+        android:id="@+id/Project_persons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Persons"
+        android:textSize="16dip"
+        android:textStyle="bold"></TextView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+</LinearLayout>

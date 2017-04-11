@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import net.tvalk.actortemplates.Adapter.ProjectAdapter;
 import net.tvalk.actortemplates.Classes.Template;
 import net.tvalk.actortemplates.Classes.User;
 import net.tvalk.actortemplates.R;
@@ -30,14 +31,14 @@ import java.util.ArrayList;
 public class ShowActorTemplate extends AppCompatActivity {
     DatabaseReference mDatabase =  FirebaseDatabase.getInstance().getReference();
 
-    private EntriesAdapter2 mAdapter;
+    private ProjectAdapter mAdapter;
     private FirebaseAuth mFirebaseAuth;
     ArrayList<User> templates = new ArrayList<>();
 
     EditText naamEditText, beschrijvingEditText;
     Button savebutton;
     RecyclerView rv;
-    EntriesAdapter2 adapter;
+    ProjectAdapter adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -118,7 +119,7 @@ public class ShowActorTemplate extends AppCompatActivity {
         }
         if(templates.size()>0)
         {
-            adapter=new EntriesAdapter2(ShowActorTemplate.this, templates);
+//            adapter=new ProjectAdapter(ShowActorTemplate.this, templates);
             rv.setAdapter(adapter);
         }
     }

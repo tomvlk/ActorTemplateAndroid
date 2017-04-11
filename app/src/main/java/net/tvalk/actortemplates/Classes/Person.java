@@ -12,39 +12,15 @@ public class Person {
     private String name;
     private String phone;
     private String photo;
+    String id;
 
 
-
-    public String getPhone() {
-        return phone;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public String getFunction() {
-        return function;
-    }
-
-    public void setFunction(String function) {
-        this.function = function;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getEmail() {
@@ -55,12 +31,36 @@ public class Person {
         this.email = email;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFunction() {
+        return function;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
 

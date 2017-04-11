@@ -25,7 +25,7 @@ import net.tvalk.actortemplates.Activity.SignInActivity;
 import net.tvalk.actortemplates.Adapter.ProjectAdapter;
 import net.tvalk.actortemplates.R;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class ShowProjects extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;

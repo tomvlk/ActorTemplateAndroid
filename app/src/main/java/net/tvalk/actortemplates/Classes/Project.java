@@ -6,9 +6,7 @@ package net.tvalk.actortemplates.Classes;
 
 public class Project {
     private String description, name;
-
-    public Project() {
-    }
+    String key;
 
     public String getDescription() {
         return description;
