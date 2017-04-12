@@ -19,10 +19,11 @@ import net.tvalk.actortemplates.R;
  */
 
 public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter.PersonViewHolder> {
-
+private String project_key;
     public PersonAdapter(String projectkey) {
         super(Person.class, R.layout.person_row, PersonAdapter.PersonViewHolder.class,
                 FirebaseDatabase.getInstance().getReference().child("projects").child("-Kh2cL5pGrof4LwnOsDu").child("persons"));
+        this.project_key=projectkey;
     }
 
 
@@ -34,6 +35,7 @@ public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter
         viewHolder.phone.setText(model.getPhone());
         viewHolder.function.setText(model.getFunction());
         viewHolder.p = model;
+        viewHolder.project_key = project_key;
         viewHolder.key = getRef(position).getKey();
     }
 
@@ -42,6 +44,7 @@ public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter
         public TextView description, name, email, function, phone;
         public Person p;
         public String key, key2;
+        String project_key;
         ImageView photo;
 
         public PersonViewHolder(View itemView) {
@@ -64,7 +67,7 @@ public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter
             intent.putExtra("phone", p.getDescription());
             intent.putExtra("photo", p.getDescription());
             intent.putExtra("function", p.getDescription());
-
+            intent.putExtra("project_key", project_key);
 
             intent.putExtra("key", key);
             v.getContext().startActivity(intent);
