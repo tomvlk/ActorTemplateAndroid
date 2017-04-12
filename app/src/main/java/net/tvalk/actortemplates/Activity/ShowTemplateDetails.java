@@ -102,6 +102,7 @@ public class ShowTemplateDetails extends AppCompatActivity implements GoogleApiC
             public void onClick(View view) {
                 Intent intent = getIntent();
                 project_key = intent.getStringExtra("project_key");
+                template_key = intent.getStringExtra("template_key");
                 Intent i = new Intent(ShowTemplateDetails.this, InsertPersonIntemplate.class );
                 i.putExtra("project_key", project_key);
                 i.putExtra("template_key", template_key);
