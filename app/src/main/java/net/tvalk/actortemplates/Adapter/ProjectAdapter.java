@@ -52,7 +52,7 @@ public class ProjectAdapter extends FirebaseRecyclerAdapter<Project, ProjectAdap
             Intent intent = new Intent(v.getContext(), ShowProjectDetails.class);
             intent.putExtra("template_name", p.getName());
             intent.putExtra("template_description", p.getDescription());
-            intent.putExtra("key", key);
+            intent.putExtra("project_key", key);
             v.getContext().startActivity(intent);
         }
     }

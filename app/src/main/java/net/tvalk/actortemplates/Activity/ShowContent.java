@@ -40,7 +40,7 @@ public class ShowContent extends AppCompatActivity {
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         Intent intent = getIntent();
-        key = intent.getStringExtra("key");
+        key = intent.getStringExtra("projectkey");
         mDatabase.child("projects").child("-Kh2cL5pGrof4LwnOsDu").getRef().addListenerForSingleValueEvent(
                 new ValueEventListener() {
 

@@ -21,6 +21,10 @@
         <activity android:name=".Activity.ShowTemplates"/>
         <activity android:name=".Activity.ShowPersons"/>
         <activity android:name=".Activity.ShowTemplateDetails"/>
+        <activity android:name=".Activity.ShowProjects"/>
+        <activity android:name=".Activity.SignInActivity"/>
+        <activity android:name=".Activity.EditTemplate"/>
+        <activity android:name=".Activity.InsertPersonIntemplate"/>
     </application>
 
 </manifest>

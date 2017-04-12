@@ -4,15 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -24,6 +28,9 @@ import com.google.firebase.auth.FirebaseUser;
 import net.tvalk.actortemplates.Activity.SignInActivity;
 import net.tvalk.actortemplates.Adapter.ProjectAdapter;
 import net.tvalk.actortemplates.R;
+
+import static android.R.attr.id;
+
 
 public class ShowProjects extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
     // Firebase instance variables
@@ -44,33 +51,32 @@ public class ShowProjects extends AppCompatActivity implements GoogleApiClient.O
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_projects);
-//
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayUseLogoEnabled(true);
+//        getSupportActionBar().setDisplayShowTitleEnabled(true);
         mUsername = ANONYMOUS;
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-//        if (mFirebaseUser == null) {
-//            // Not signed in, launch the Sign In activity
-//            startActivity(new Intent(this, SignInActivity.class));
-//            finish();
-//            return;
-//        } else {
-//            mUsername = mFirebaseUser.getDisplayName();
-//            Log.d("ShowDiaries", mUsername);
-//            Log.d("ShowDiaries", mFirebaseUser.getUid());
-//            if (mFirebaseUser.getPhotoUrl() != null) {
-//                mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-//            }
-//        }
+        if (mFirebaseUser == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+            return;
+        } else {
+            mUsername = mFirebaseUser.getDisplayName();
+            Log.d("ShowDiaries", mUsername);
+            Log.d("ShowDiaries", mFirebaseUser.getUid());
+            if (mFirebaseUser.getPhotoUrl() != null) {
+                mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+            }
+        }
 
-//        mGoogleApiClient = new GoogleApiClient.Builder(this)
-//                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-//                .addApi(Auth.GOOGLE_SIGN_IN_API)
-//                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API)
+                .build();
 
 
         //add a OnItemClickListener
@@ -102,13 +108,26 @@ public class ShowProjects extends AppCompatActivity implements GoogleApiClient.O
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuItem profilepic = (MenuItem) menu.getItem(R.id.profile_picture);
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.m.menu_show_diaries, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.menuShowProject){
+            startActivity(new Intent(this, ShowProjects.class));
+            return true;
+        }
+        if(id==R.id.menuLogout){
+            mFirebaseAuth.signOut();
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+            mUsername = ANONYMOUS;
+            startActivity(new Intent(this, SignInActivity.class));
+            return true;
+        }
 //        // Handle action bar item clicks here. The action bar will
 //        // automatically handle clicks on the Home/Up button, so long
 //        // as you specify a parent activity in AndroidManifest.xml.
@@ -132,8 +151,8 @@ public class ShowProjects extends AppCompatActivity implements GoogleApiClient.O
 //
 ////
 ////
-//        return super.onOptionsItemSelected(item);
-//    }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @Override

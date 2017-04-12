@@ -11,18 +11,25 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
 import net.tvalk.actortemplates.Activity.ShowPersons;
+import net.tvalk.actortemplates.Activity.ShowProjectDetails;
 import net.tvalk.actortemplates.Classes.Person;
+import net.tvalk.actortemplates.Classes.PersonTemplate;
 import net.tvalk.actortemplates.R;
+
+import static android.R.attr.key;
 
 /**
  * Created by Gebruiker on 7-4-2017.
  */
 
-public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter.PersonViewHolder> {
+public class PersonInTemplateAdapter extends FirebaseRecyclerAdapter<Person, PersonInTemplateAdapter.PersonViewHolder> {
+    String project_key, template_key;
 
-    public PersonAdapter(String projectkey) {
-        super(Person.class, R.layout.person_row, PersonAdapter.PersonViewHolder.class,
-                FirebaseDatabase.getInstance().getReference().child("projects").child("-Kh2cL5pGrof4LwnOsDu").child("persons"));
+    public PersonInTemplateAdapter(String project_key, String template_key) {
+        super(Person.class, R.layout.person_template_row, PersonInTemplateAdapter.PersonViewHolder.class,
+                FirebaseDatabase.getInstance().getReference().child("projects").child(project_key).child("persons"));
+        this.project_key = project_key;
+        this.template_key = template_key;
     }
 
 
@@ -34,14 +41,16 @@ public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter
         viewHolder.phone.setText(model.getPhone());
         viewHolder.function.setText(model.getFunction());
         viewHolder.p = model;
-        viewHolder.key = getRef(position).getKey();
+        viewHolder.person_key = getRef(position).getKey();
+        viewHolder.project_key = project_key;
+        viewHolder.template_key = template_key;
     }
 
 
     public static class PersonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView description, name, email, function, phone;
         public Person p;
-        public String key, key2;
+        public String project_key, template_key, person_key;
         ImageView photo;
 
         public PersonViewHolder(View itemView) {
@@ -57,17 +66,9 @@ public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(), ShowPersons.class);
-            intent.putExtra("name", p.getName());
-            intent.putExtra("description", p.getDescription());
-            intent.putExtra("email", p.getDescription());
-            intent.putExtra("phone", p.getDescription());
-            intent.putExtra("photo", p.getDescription());
-            intent.putExtra("function", p.getDescription());
-
-
-            intent.putExtra("key", key);
-            v.getContext().startActivity(intent);
+            PersonTemplate p = new PersonTemplate();
+            p.setMember(true);
+            FirebaseDatabase.getInstance().getReference().child("projects").child(project_key).child("templates").child(template_key).child("persons").child(person_key).setValue(p);
         }
     }
 }
