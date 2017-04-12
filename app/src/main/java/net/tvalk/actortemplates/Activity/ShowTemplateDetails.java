@@ -90,7 +90,7 @@ public class ShowTemplateDetails extends AppCompatActivity implements GoogleApiC
 
 
 
-        mAdapter = new PersonAdapter(template_key);
+        mAdapter = new PersonAdapter(project_key, template_key);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

@@ -24,7 +24,7 @@ import net.tvalk.actortemplates.R;
  */
 
 public class ShowPersons extends AppCompatActivity {
-    String project_key, template_key;
+    String project_key, template_key, person_key;
     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
     // Firebase instance variables
     private FirebaseAuth mFirebaseAuth;
@@ -45,8 +45,10 @@ public class ShowPersons extends AppCompatActivity {
         Intent intent = getIntent();
         project_key = intent.getStringExtra("project_key");
         template_key = intent.getStringExtra("template_key");
-        if (project_key != null) {
-            mDatabase.child("projects").child(project_key).child("persons").getRef().addListenerForSingleValueEvent(
+        person_key = intent.getStringExtra("key");
+
+        if (person_key != null) {
+            mDatabase.child("projects").child(project_key).child("persons").child(person_key).getRef().addListenerForSingleValueEvent(
                     new ValueEventListener() {
 
                         @Override
@@ -63,17 +65,20 @@ public class ShowPersons extends AppCompatActivity {
                                 public void onClick(View view) {
                                     updatePerson();
                                     Intent i = new Intent(ShowPersons.this, InsertTemplate.class );
-                                    i.putExtra("projectkey", project_key);
+                                    i.putExtra("project_key", project_key);
                                     startActivity(i);
                                 }
                             });
                             Person entry = dataSnapshot.getValue(Person.class);
-                            tv1.setText(entry.getName());
-                            tv2.setText(entry.getFunction());
-                            tv3.setText(entry.getEmail());
-                            tv4.setText(entry.getPhone());
-////                        tv5.setText(entry.getPhoto());
-                            tv6.setText(entry.getDescription());
+
+                            if (entry != null) {
+                                tv1.setText(entry.getName());
+                                tv2.setText(entry.getFunction());
+                                tv3.setText(entry.getEmail());
+                                tv4.setText(entry.getPhone());
+                                // tv5.setText(entry.getPhoto());
+                                tv6.setText(entry.getDescription());
+                            }
                         }
 
                         @Override
@@ -103,7 +108,7 @@ public class ShowPersons extends AppCompatActivity {
                                 p.setPhoto("testphoto.png");
                                 p.setPhone(telefoon);
                                 p.setFunction(functie);
-//            mDatabase.child("persons").push().setValue(p);
+                                //mDatabase.child("projects").child(project_key).child("persons").push().setValue(p);
                             }
                         }
                     }

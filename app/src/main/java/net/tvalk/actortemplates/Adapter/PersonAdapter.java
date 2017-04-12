@@ -19,11 +19,14 @@ import net.tvalk.actortemplates.R;
  */
 
 public class PersonAdapter extends FirebaseRecyclerAdapter<Person, PersonAdapter.PersonViewHolder> {
-private String project_key;
-    public PersonAdapter(String projectkey) {
+    private String project_key;
+    private String template_key;
+
+    public PersonAdapter(String projectkey, String templatekey) {
         super(Person.class, R.layout.person_row, PersonAdapter.PersonViewHolder.class,
                 FirebaseDatabase.getInstance().getReference().child("projects").child("-Kh2cL5pGrof4LwnOsDu").child("persons"));
-        this.project_key=projectkey;
+        this.project_key = projectkey;
+        this.template_key = templatekey;
     }
 
 
